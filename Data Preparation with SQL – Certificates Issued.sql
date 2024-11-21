@@ -1,21 +1,9 @@
-select * from student_certificates;
+Count the Number of Certificates Issued by Each Student--
+
 select student_id, count(*) as certificates_issued from student_certificates
 group by student_id;
 
-select 
-    a.student_id,
-    round(sum(seconds_watched)/60,2) as minutes_watched,
-    a.certificates_issued
-from (
-       select 
-		   student_id, 
-           count(*) as certificates_issued 
-	   from student_certificates
-       group by student_id
-	   ) a
-join student_video_watched w on w.student_id = a.student_id
-group by a.student_id;
-
+Calculate Minutes Watched and Certificates Issued for Students (Left Join)--
 
 SELECT 
     a.student_id,
